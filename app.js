@@ -100,6 +100,13 @@ function cadastrarDespesa() {
     btn.innerHTML = 'Voltar'
   
     $('#modalRegistraDespesa').modal('show');
+    
+    ano.value = '';
+    mes.value = '';
+    dia.value = '';
+    tipo.value = '';
+    descricao.value = '';
+    valor.value = '';
   } else {
 
     let btn = document.getElementById('modal_btn');
