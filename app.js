@@ -41,6 +41,30 @@ class Bd {
 
     localStorage.setItem('id', id);
  }
+
+ recuperarTodosRegistros() {
+
+  let despesas = Array()
+
+  let id = localStorage.getItem('id');
+
+   for (let i = 1; i <= id; i++) {
+   
+    // Recuperar despesa em objeto literal
+    let despesa = JSON.parse(localStorage.getItem(i));
+    
+    // Verificando se existe a possibilidades de índices pulados
+    if (despesa === null) {
+      continue;
+    }
+
+    // Acrescentando despesa
+    despesas.push(despesa);
+  }
+
+  return despesas;
+ }
+
 }
 
 let bd = new Bd()
@@ -65,10 +89,49 @@ function cadastrarDespesa() {
 
   if (despesa.validarDados()) {
     bd.gravar(despesa);
-    $('#sucessoGravacao').modal('show');
-  } else {
-    $('#erroGravacao').modal('show');
-  }
+    let titulo = document.getElementById('modal_titulo');
+    let btn = document.getElementById('modal_btn');
 
+    document.getElementById('modal_titulo_div').className = "modal-header text-success";
+    titulo.innerHTML = 'Despesa cadastrada com sucesso!';
+    titulo.className = 'ml-auto'
+
+    btn.className = 'btn btn-success'
+    btn.innerHTML = 'Voltar'
+  
+    $('#modalRegistraDespesa').modal('show');
+  } else {
+
+    let btn = document.getElementById('modal_btn');
+
+    document.getElementById('modal_titulo_div').className = "modal-header text-danger";
+    document.getElementById('modal_titulo').innerHTML = 'Existem campos obrigatórios que não foram preenchidos'
+
+    btn.className = 'btn btn-danger'
+    btn.innerHTML = 'Voltar e corrigir'
+
+    $('#modalRegistraDespesa').modal('show');
+  }
 }
 
+function carregarListaDespesas() {
+
+  let despesas = Array ()
+  despesas = bd.recuperarTodosRegistros();
+
+  let listaDespesas = document.getElementById('listaDespesas');
+
+  // Percorrer listando todas despesas
+  despesas.forEach(function(despesa) {
+    
+    // Criando linhas (tr)
+    var linha = listaDespesas.insertRow();
+
+    // Criando colundas (td)
+    linha.insertCell(0).innerHTML = `${despesa.dia}/${despesa.mes}/${despesa.ano}`;
+    linha.insertCell(1).innerHTML = despesa.tipo;
+    linha.insertCell(2).innerHTML = despesa.descricao;
+    linha.insertCell(3).innerHTML = despesa.valor;
+
+  });  
+}

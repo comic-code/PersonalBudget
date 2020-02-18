@@ -2,6 +2,7 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Orçamento pessoal</title>
 
   <!-- Bootstrap início -->
@@ -26,10 +27,10 @@
 
 </head>
 
-<body>
+<body onload="carregarListaDespesas()">
 
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-info mb-5">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-info mb-5">
     <div class="container">
       <a class="navbar-brand" href="#">
         <img src="logo.png" width="50" height="35" alt="Orçamento pessoal">
@@ -56,19 +57,19 @@
   <div class="container">
     <div class="row mb-5">
       <div class="col">
-        <h1 class="display-4 text-info">Consulta de despesas</h1>
+        <h1 class="display-4 text-info text-center text-sm-left">Consulta de despesas</h1>
       </div>
     </div>
 
-    <div class="row mb-2">
-      <div class="col-md-2">
+    <div class="row">
+      <div class="col-5 mb-2 col-md-2">
         <select class="form-control" id="ano">
           <option value="">Ano</option>
-          <option value="2018">2020</option>
+          <option value="2020">2020</option>
         </select>
       </div>
 
-      <div class="col-md-2">
+      <div class="col-4 mb-2 col-md-2">
         <select class="form-control" id="mes">
           <option value="">Mês</option>
           <option value="1">Janeiro</option>
@@ -86,29 +87,29 @@
         </select>
       </div>
 
-      <div class="col-md-2">
-        <input type="text" class="form-control" placeholder="Dia" id="dia" />
+      <div class="col-3 col-md-2">
+        <input type="number" min="1" max="31" class="form-control" placeholder="Dia" id="dia" />
       </div>
 
-      <div class="col-md-6">
+      <div class="mb-2 col-md-6">
         <select class="form-control" id="tipo">
-          <option>Tipo</option>
-          <option value="1">Alimentação</option>
-          <option value="2">Educação</option>
-          <option value="3">Lazer</option>
-          <option value="4">Saúde</option>
-          <option value="5">Transporte</option>
+          <option value="">Tipo</option>
+          <option value="Alimentação">Alimentação</option>
+          <option value="Educação">Educação</option>
+          <option value="Lazer">Lazer</option>
+          <option value="Saúde">Saúde</option>
+          <option value="Transporte">Transporte</option>
         </select>
       </div>
     </div>
 
-    <div class="row  mb-5">
-      <div class="col-md-8">
+    <div class="row mb-5">
+      <div class="mb-2 col-md-8">
         <input type="text" class="form-control" placeholder="Descrição" id="descricao" />
       </div>
 
-      <div class="col-md-2">
-        <input type="text" class="form-control" placeholder="Valor" id="valor" />
+      <div class="mb-2 col-md-2">
+        <input type="number" class="form-control" placeholder="Valor" id="valor" />
       </div>
 
       <div class="col-md-2 d-flex justify-content-end">
@@ -131,7 +132,8 @@
             </tr>
           </thead>
 
-          <tbody>
+          <tbody id="listaDespesas">
+            
           </tbody>
         </table>
       </div>
