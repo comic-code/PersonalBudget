@@ -27,7 +27,7 @@
 
 </head>
 
-<body onload="carregarListaDespesas()">
+<body onload="carregaListaDespesas()">
 
 
   <nav class="navbar navbar-expand-sm navbar-dark bg-info mb-5">
@@ -113,7 +113,7 @@
       </div>
 
       <div class="col-md-2 d-flex justify-content-end">
-        <button type="button" class="btn btn-info">
+        <button type="button" class="btn btn-info" onclick="pesquisarDespesa()">
           <i class="fas fa-search"></i>
         </button>
       </div>
@@ -133,7 +133,7 @@
           </thead>
 
           <tbody id="listaDespesas">
-            
+
           </tbody>
         </table>
       </div>
