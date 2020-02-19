@@ -28,8 +28,6 @@
 </head>
 
 <body onload="carregaListaDespesas()">
-
-
   <nav class="navbar navbar-expand-sm navbar-dark bg-info mb-5">
     <div class="container">
       <a class="navbar-brand" href="#">
@@ -49,7 +47,6 @@
             <a class="nav-link" href="consulta.html">Consulta</a>
           </li>
         </ul>
-
       </div>
     </div>
   </nav>
@@ -119,11 +116,13 @@
       </div>
     </div>
 
+    <h4 class="d-none text-center text-info">Arraste para o lado para apagar</h4>
+
     <div class="row">
-      <div class="col">
-        <table class="table">
-          <thead>
-            <tr>
+      <div class="table-responsive ">
+        <table class="table table-hover">
+          <thead class="bg-info">
+            <tr class="text-light">
               <th>Data</th>
               <th>Tipo</th>
               <th>Descrição</th>
@@ -131,7 +130,6 @@
               <th></th>
             </tr>
           </thead>
-
           <tbody id="listaDespesas">
 
           </tbody>
